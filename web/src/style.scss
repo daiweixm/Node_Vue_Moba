@@ -1,0 +1,263 @@
+// reset
+* {
+  box-sizing: border-box;
+  outline: none;
+}
+
+html {
+  font-size: 13px;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.2em;
+  background: #f1f1f1;
+}
+
+a {
+  color: #666;
+}
+
+// colors
+$colors: (
+  'primary': #db9e3f,
+  'white': #fff,
+  'black': #000,
+  'dark': #222,
+  'grey-1': #666,
+  'grey': #999,
+  'light': #f9f9f9,
+  'light-1': #d4d9de,
+  'light-dark': #343440,
+);
+$border-color: map-get($colors, 'light-1');
+
+@each $colorKey, $color in $colors {
+  .text-#{$colorKey} {
+    color: $color;
+  }
+  .bg-#{$colorKey} {
+    background-color: $color;
+  }
+}
+
+// text
+@each $var in (left, center, right) {
+  .text-#{$var} {
+    text-align: $var;
+  }
+}
+
+// font size
+$base-font-size: 1;
+$font-sizes: (
+  xxs: 0.6154rem,
+  xs: 0.7692rem,
+  sm: 0.9231rem,
+  md: 1,
+  lg: 1.0769rem,
+  xl: 1.2308rem,
+);
+
+@each $sizeKey, $size in $font-sizes {
+  .fs-#{$sizeKey} {
+    font-size: $size * $base-font-size;
+  }
+}
+
+// width, height
+.w-100 {
+  width: 100%;
+}
+
+.h-100 {
+  height: 100%;
+}
+
+// flex
+.d-flex {
+  display: flex;
+}
+
+.flex-column {
+  flex-direction: column;
+}
+
+.flex-wrap {
+  flex-wrap: wrap;
+}
+
+$flex-jc: (
+  start: flex-start,
+  end: flex-end,
+  center: center,
+  between: space-between,
+  around: space-around,
+);
+
+@each $key, $value in $flex-jc {
+  .jc-#{$key} {
+    justify-content: $value;
+  }
+}
+
+$flex-ai: (
+  start: flex-start,
+  end: flex-end,
+  center: center,
+  between: space-between,
+  around: space-around,
+  stretch: stretch,
+);
+
+@each $key, $value in $flex-ai {
+  .ai-#{$key} {
+    align-items: $value;
+  }
+}
+
+.flex-1 {
+  flex: 1;
+}
+
+.flex-grow-1 {
+  flex-grow: 1;
+}
+
+$spacing-types: (
+  m: margin,
+  p: padding,
+);
+$spacing-directions: (
+  t: top,
+  r: right,
+  b: bottom,
+  l: left,
+);
+$spacing-base-size: 1.5rem;
+$spacing-sizes: (
+  0: 0,
+  1: 0.25,
+  2: 0.5,
+  3: 1,
+  4: 1.5,
+  5: 3,
+);
+
+// .mx-1
+@each $sizeKey, $size in $spacing-sizes {
+  @each $typeKey, $type in $spacing-types {
+    .#{$typeKey}x-#{$sizeKey} {
+      #{$type}-left: $size * $spacing-base-size;
+      #{$type}-right: $size * $spacing-base-size;
+    }
+  }
+}
+
+// .my-1
+@each $sizeKey, $size in $spacing-sizes {
+  @each $typeKey, $type in $spacing-types {
+    .#{$typeKey}y-#{$sizeKey} {
+      #{$type}-top: $size * $spacing-base-size;
+      #{$type}-bottom: $size * $spacing-base-size;
+    }
+  }
+}
+
+// m-0
+@each $typeKey, $type in $spacing-types {
+  @each $sizeKey, $size in $spacing-sizes {
+    .#{$typeKey}-#{$sizeKey} {
+      #{$type}: $size * $spacing-base-size;
+    }
+  }
+}
+
+@each $typeKey, $type in $spacing-types {
+  @each $directionKey, $direction in $spacing-directions {
+    @each $sizeKey, $size in $spacing-sizes {
+      // .mt-1 {margin-top: 0.25rem;}
+      .#{$typeKey}#{$directionKey}-#{$sizeKey} {
+        #{$type}-#{$direction}: $size * $spacing-base-size;
+      }
+    }
+  }
+  // .#{$typeKey} {
+  //   #{$type}: 0;
+  // }
+}
+
+// button
+.btn {
+  border: none;
+  border-radius: 0.1538rem;
+  font-size: map-get($font-sizes, 'sm') * $base-font-size;
+  padding: 0.2rem 0.6rem;
+}
+
+// nav
+.nav {
+  display: flex;
+  // justify-content: space-around;
+  .nav-item {
+    border-bottom: 3px solid transparent;
+    padding-bottom: 0.1rem;
+    &.active {
+      color: map-get($colors, 'primary');
+      border-bottom: 3px solid map-get($colors, 'primary');
+    }
+  }
+  &.nav-inverse {
+    .nav-item {
+      color: map-get($colors , 'white');
+      &.active {
+        border-bottom-color: map-get($colors, 'white');
+      }
+    }
+  }
+}
+
+.nav-icons {
+  border-top: 1px solid #d4d9de;
+  border-bottom: 1px solid #d4d9de;
+  .nav-item {
+    width: 25%;
+    border-right: 1px solid #d4d9de;
+    &:nth-child(4n) {
+      border-right: none;
+    }
+  }
+}
+
+.card {
+  .card-header {
+    border-bottom: 1px solid #808080;
+  }
+  border-bottom: 1px solid 808080;
+}
+// nav-inverse
+
+// sprite
+.sprite {
+  background: url(assets/images/index.png) no-repeat 0 0;
+  background-size: 28.8462rem;
+  display: inline-block;
+  &.sprite-news {
+    width: 1.7692rem;
+    height: 1.5385rem;
+    background-position: 63.546% 15.517%;
+  }
+
+  &.sprite-story {
+    width: 23px;
+    height: 20px;
+    background-position: 90.483% 15.614%;
+  }
+
+  &.sprite-up-arrow{
+    width: 10px;
+    height: 10px;
+    background-position: 38.577% 52.076%;
+  }
+}

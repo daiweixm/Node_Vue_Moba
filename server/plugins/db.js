@@ -3,4 +3,6 @@ module.exports = app => {
   mongoose.connect('mongodb://iyysz.imwork.net:27017/node-vue-moba', {
     useNewUrlParser: true
   })
+
+  require('require-all')(__dirname + '/../models')
 }

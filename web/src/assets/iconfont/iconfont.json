@@ -1,0 +1,30 @@
+{
+  "id": "",
+  "name": "",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "456611",
+      "name": "menu",
+      "font_class": "menu",
+      "unicode": "e89f",
+      "unicode_decimal": 59551
+    },
+    {
+      "icon_id": "6887403",
+      "name": "Hero",
+      "font_class": "Hero",
+      "unicode": "e688",
+      "unicode_decimal": 59016
+    },
+    {
+      "icon_id": "8552485",
+      "name": "menu",
+      "font_class": "menu1",
+      "unicode": "e63b",
+      "unicode_decimal": 58939
+    }
+  ]
+}
